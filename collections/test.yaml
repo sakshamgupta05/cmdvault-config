@@ -1,0 +1,15 @@
+commands:
+  - name: Neo4j connection
+    command: >
+      curl --location 'http://{{host}}:7474/db/neo4j/query/v2' --user {{username}}:{{password}} --header 'Content-Type: application/json' --header 'Accept: application/json' --data '{ "statement": "MATCH (n) RETURN n LIMIT 5" }'
+    parameters:
+      - name: host
+        description: Neo4j host
+        defaultValue: localhost
+      - name: username
+        description: Neo4j username
+        defaultValue: neo4j
+      - name: password
+        description: Neo4j password
+        defaultValue: neo4j
+        
