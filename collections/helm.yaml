@@ -1,0 +1,25 @@
+commands:
+  - name: Extract yaml
+    command: helm template {{repo}}/{{chart}}{? --version {{version}} ?}{? -f {{values}}.yaml?} > {{output}}.yaml
+    parameters:
+      - name: repo
+        description: HELM repository
+      - name: chart
+        description: HELM chart in the repo
+      - name: output
+        description: Name of output file {{output}}.yaml
+      - name: version
+        description: Chart version
+        optional: true
+      - name: values
+        description: values.yaml file path
+        optional: true
+  - name: Get versions
+    command: helm search repo {{repo}} --versions
+    parameters:
+      - name: repo
+  - name: Repo add
+    command: helm repo add <name> <url>
+    parameters:
+      - name: name
+      - name: url

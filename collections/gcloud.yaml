@@ -1,0 +1,10 @@
+commands:
+  - name: Increase boot disk size
+    command: gcloud compute disks resize {{name}} --project {{project}} --size {{size}} --zone {{zone}}
+    parameters:
+      - name: name
+        description: Name of disk
+      - name: size
+        description: Size of disk in GB
+      - name: project
+      - name: zone

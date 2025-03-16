@@ -1,0 +1,27 @@
+commands:
+  - name: Delete pod with label
+    command: kubectl delete pods -l app={{label}}{? -n {{namespace}} ?}
+    parameters:
+      - name: label
+      - name: namespace
+        description: Kubernetes namespace
+        optional: true
+  - name: Scale deployment
+    command: kubectl scale deployment {{deployment}}{? -n {{namespace}} ?} --replicas={{replicas}}
+    parameters:
+      - name: deployment
+      - name: replicas
+      - name: namespace
+        optional: true
+  - name: Port forward
+    command: kubectl port-forward svc/{{service}} {{local_port}}:{{pod_port}}
+    parameters:
+      - name: service
+      - name: local_port
+      - name: pod_port
+  - name: Terminate stuck PVC
+    command: kubectl patch pvc {{pvc}} -p '{"metadata":{"finalizers":null}}'{? -n {{namespace}} ?}
+    parameters:
+      - name: pvc
+      - name: namespace
+        optional: true
