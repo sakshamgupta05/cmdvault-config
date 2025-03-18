@@ -14,11 +14,13 @@ commands:
       - name: namespace
         optional: true
   - name: Port forward
-    command: kubectl port-forward svc/{{service}} {{local_port}}:{{pod_port}}
+    command: kubectl port-forward svc/{{service}} {{local_port}}:{{pod_port}}{? -n {{namespace}} ?}
     parameters:
       - name: service
       - name: local_port
       - name: pod_port
+      - name: namespace
+        optional: true
   - name: Terminate stuck PVC
     command: kubectl patch pvc {{pvc}} -p '{"metadata":{"finalizers":null}}'{? -n {{namespace}} ?}
     parameters:
