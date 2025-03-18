@@ -18,5 +18,7 @@ commands:
         defaultValue: 64
   - name: kill process running on a port
     command: lsof -t -i:{{port}} | xargs kill
+    parameters:
+      - name: port
   - name: Benchmark terminal startup
     command: hyperfine -i -N --warmup 1 "zsh -i -c exit"
