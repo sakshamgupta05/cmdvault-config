@@ -9,7 +9,6 @@ commands:
       - name: project
       - name: zone
   - name: GKE get credentials
-    command: gcloud compute disks resize {{name}} --project {{project}} --size {{size}} --zone {{zone}}
     command: gcloud container clusters get-credentials {{cluster}} --internal-ip --location {{location}} --project {{project}}
     parameters:
       - name: cluster
