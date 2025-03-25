@@ -8,3 +8,10 @@ commands:
         description: Size of disk in GB
       - name: project
       - name: zone
+  - name: GKE get credentials
+    command: gcloud compute disks resize {{name}} --project {{project}} --size {{size}} --zone {{zone}}
+    command: gcloud container clusters get-credentials {{cluster}} --internal-ip --location {{location}} --project {{project}}
+    parameters:
+      - name: cluster
+      - name: location
+      - name: project
